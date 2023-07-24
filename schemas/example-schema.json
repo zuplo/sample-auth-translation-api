@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "title": "Product",
+  "required": ["name", "description", "material", "price"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "default": "",
+      "title": "The product name",
+      "examples": ["Intelligent Metal Salad"]
+    },
+    "description": {
+      "type": "string",
+      "title": "The product description",
+      "examples": [
+        "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7-Color RGB LED Back-lighting for smart functionality"
+      ]
+    },
+    "material": {
+      "type": "string",
+      "default": "",
+      "title": "The material Schema",
+      "examples": ["Maple"]
+    },
+    "price": {
+      "type": "number",
+      "default": "",
+      "title": "The product price in USD",
+      "examples": ["894.26"]
+    }
+  }
+}

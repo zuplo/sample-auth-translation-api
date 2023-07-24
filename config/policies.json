@@ -1,0 +1,50 @@
+{
+  "policies": [
+    {
+      "handler": {
+        "export": "SetHeadersInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "headers": [
+            {
+              "name": "authorization",
+              "value": "Bearer $env(ZAPI_KEY)",
+              "overwrite": true
+            }
+          ]
+        }
+      },
+      "name": "add-zapi-key-auth",
+      "policyType": "set-headers-inbound"
+    },
+    {
+      "handler": {
+        "export": "default",
+        "module": "$import(./modules/verify-jwt-consumer)"
+      },
+      "name": "verify-consumer-access",
+      "policyType": "custom-code-inbound"
+    },
+    {
+      "handler": {
+        "export": "Auth0JwtInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "allowUnauthenticatedRequests": false,
+          "auth0Domain": "josh-demo.us.auth0.com",
+          "audience": "https://zuplo-consumer-api"
+        }
+      },
+      "name": "auth0-jwt-auth-inbound",
+      "policyType": "auth0-jwt-auth-inbound"
+    },
+    {
+      "handler": {
+        "export": "default",
+        "module": "$import(./modules/verify-key-in-consumer)"
+      },
+      "name": "verify-key-in-consumer",
+      "policyType": "custom-code-inbound"
+    }
+  ]
+}
