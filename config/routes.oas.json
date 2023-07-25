@@ -55,33 +55,6 @@
         "operationId": "f73c7996-b6bc-48b8-815b-ead885d723ed"
       }
     },
-    "/consumers/{consumerName} ": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
-      "patch": {
-        "summary": "Update consumer",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
-        "x-zuplo-route": {
-          "corsPolicy": "anything-goes",
-          "handler": {
-            "export": "urlRewriteHandler",
-            "module": "$import(@zuplo/runtime)",
-            "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}"
-            }
-          },
-          "policies": {
-            "inbound": [
-              "auth0-jwt-auth-inbound",
-              "verify-consumer-access",
-              "add-zapi-key-auth"
-            ]
-          }
-        },
-        "operationId": "84960874-662e-4454-ae3f-5f53611ba072"
-      }
-    },
     "/consumers/{consumerName}/keys/{keyId}": {
       "x-zuplo-path": {
         "pathMode": "open-api"
@@ -108,6 +81,36 @@
           }
         },
         "operationId": "fa92d9f2-3d03-48e9-b475-19206b52f64a"
+      }
+    },
+    "/consumers/{consumerName}": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "patch": {
+        "summary": "Update consumer",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "anything-goes",
+          "handler": {
+            "export": "urlRewriteHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "auth0-jwt-auth-inbound",
+              "verify-consumer-access",
+              "add-zapi-key-auth"
+            ],
+            "outbound": [
+              "set-500"
+            ]
+          }
+        },
+        "operationId": "84960874-662e-4454-ae3f-5f53611ba072"
       }
     }
   }
