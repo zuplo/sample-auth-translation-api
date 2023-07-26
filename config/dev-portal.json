@@ -1,4 +1,5 @@
 {
   "$schema": "https://cdn.zuplo.com/schemas/dev-portal.json",
-  "enableAuthentication": true
+  "enableAuthentication": true,
+  "generateExamples": true
 }

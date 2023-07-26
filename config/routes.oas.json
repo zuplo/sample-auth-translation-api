@@ -7,7 +7,7 @@
   "paths": {
     "/consumers/my": {
       "x-zuplo-path": {
-        "pathMode": "open-api"
+        "pathMode": "url-pattern"
       },
       "get": {
         "summary": "Get my consumers",
@@ -25,7 +25,8 @@
             "inbound": [
               "auth0-jwt-auth-inbound",
               "add-zapi-key-auth"
-            ]
+            ],
+            "outbound": []
           }
         },
         "operationId": "d86ecbdc-2aa7-4bd0-9e61-4245ecd1d5cd"
@@ -76,6 +77,9 @@
               "auth0-jwt-auth-inbound",
               "verify-consumer-access",
               "add-zapi-key-auth"
+            ],
+            "outbound": [
+              "set-status-outbound"
             ]
           }
         },
@@ -108,27 +112,6 @@
           }
         },
         "operationId": "fa92d9f2-3d03-48e9-b475-19206b52f64a"
-      }
-    },
-    "/hello": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
-      "get": {
-        "summary": "hello",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
-        "x-zuplo-route": {
-          "corsPolicy": "none",
-          "handler": {
-            "export": "default",
-            "module": "$import(./modules/hello-ayan)",
-            "options": {}
-          },
-          "policies": {
-            "inbound": []
-          }
-        },
-        "operationId": "eb107365-d87b-464f-83cf-d17327ae9f08"
       }
     }
   }
