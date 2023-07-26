@@ -7,7 +7,7 @@
   "paths": {
     "/consumers/my": {
       "x-zuplo-path": {
-        "pathMode": "open-api"
+        "pathMode": "url-pattern"
       },
       "get": {
         "summary": "Get my consumers",
@@ -25,7 +25,8 @@
             "inbound": [
               "auth0-jwt-auth-inbound",
               "add-zapi-key-auth"
-            ]
+            ],
+            "outbound": []
           }
         },
         "operationId": "d86ecbdc-2aa7-4bd0-9e61-4245ecd1d5cd"
@@ -76,6 +77,9 @@
               "auth0-jwt-auth-inbound",
               "verify-consumer-access",
               "add-zapi-key-auth"
+            ],
+            "outbound": [
+              "set-status-outbound"
             ]
           }
         },
