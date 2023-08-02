@@ -18,12 +18,13 @@
             "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/?include-api-keys=true&key-format=visible&tag.orgId=${request.user.data[\"https://org-id\"]}"
+              "rewritePattern": "${env.BUCKET_URL}/consumers/?include-api-keys=true&key-format=visible&tag.orgId=${request.user.data.orgId}"
             }
           },
           "policies": {
             "inbound": [
               "auth0-jwt-auth-inbound",
+              "set-user-org",
               "add-zapi-key-auth"
             ],
             "outbound": []
@@ -47,10 +48,7 @@
             "options": {}
           },
           "policies": {
-            "inbound": [
-              "auth0-jwt-auth-inbound",
-              "verify-consumer-access"
-            ]
+            "inbound": ["auth0-jwt-auth-inbound", "verify-consumer-access"]
           }
         },
         "operationId": "f73c7996-b6bc-48b8-815b-ead885d723ed"
@@ -78,9 +76,7 @@
               "verify-consumer-access",
               "add-zapi-key-auth"
             ],
-            "outbound": [
-              "set-status-outbound"
-            ]
+            "outbound": ["set-status-outbound"]
           }
         },
         "operationId": "84960874-662e-4454-ae3f-5f53611ba072"
