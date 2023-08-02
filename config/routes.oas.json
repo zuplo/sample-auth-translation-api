@@ -2,28 +2,25 @@
   "openapi": "3.1.0",
   "info": {
     "version": "1.0.0",
-    "title": "My Zuplo API"
+    "title": "Sample API Key Translation Service"
   },
   "paths": {
     "/consumers/my": {
-      "x-zuplo-path": {
-        "pathMode": "url-pattern"
-      },
       "get": {
         "summary": "Get my consumers",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {
             "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/?include-api-keys=true&key-format=visible&tag.orgId=${request.user.data[\"https://org-id\"]}"
+              "rewritePattern": "${env.BUCKET_URL}/consumers/?include-api-keys=true&key-format=visible&tag.orgId=${request.user.data.orgId}"
             }
           },
           "policies": {
             "inbound": [
               "auth0-jwt-auth-inbound",
+              "set-user-org",
               "add-zapi-key-auth"
             ],
             "outbound": []
@@ -33,12 +30,8 @@
       }
     },
     "/consumers/{consumerName}/roll": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
       "post": {
         "summary": "Roll consumer key",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {
@@ -47,22 +40,15 @@
             "options": {}
           },
           "policies": {
-            "inbound": [
-              "auth0-jwt-auth-inbound",
-              "verify-consumer-access"
-            ]
+            "inbound": ["auth0-jwt-auth-inbound", "verify-consumer-access"]
           }
         },
         "operationId": "f73c7996-b6bc-48b8-815b-ead885d723ed"
       }
     },
     "/consumers/{consumerName} ": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
       "patch": {
         "summary": "Update consumer",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {
@@ -78,21 +64,15 @@
               "verify-consumer-access",
               "add-zapi-key-auth"
             ],
-            "outbound": [
-              "set-status-outbound"
-            ]
+            "outbound": ["set-status-outbound"]
           }
         },
         "operationId": "84960874-662e-4454-ae3f-5f53611ba072"
       }
     },
     "/consumers/{consumerName}/keys/{keyId}": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
       "delete": {
         "summary": "Delete key",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {

@@ -31,8 +31,8 @@
         "module": "$import(@zuplo/runtime)",
         "options": {
           "allowUnauthenticatedRequests": false,
-          "auth0Domain": "josh-demo.us.auth0.com",
-          "audience": "https://zuplo-consumer-api"
+          "auth0Domain": "$env(AUTH0_DOMAIN)",
+          "audience": "$env(AUTH0_AUDIENCE)"
         }
       },
       "name": "auth0-jwt-auth-inbound",
@@ -57,6 +57,14 @@
       },
       "name": "set-status-outbound",
       "policyType": "set-status-outbound"
+    },
+    {
+      "handler": {
+        "export": "default",
+        "module": "$import(./modules/set-org-id)"
+      },
+      "name": "set-user-org",
+      "policyType": "custom-code-inbound"
     }
   ]
 }
