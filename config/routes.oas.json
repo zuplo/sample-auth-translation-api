@@ -2,16 +2,12 @@
   "openapi": "3.1.0",
   "info": {
     "version": "1.0.0",
-    "title": "My Zuplo API"
+    "title": "Sample API Key Translation Service"
   },
   "paths": {
     "/consumers/my": {
-      "x-zuplo-path": {
-        "pathMode": "url-pattern"
-      },
       "get": {
         "summary": "Get my consumers",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {
@@ -34,12 +30,8 @@
       }
     },
     "/consumers/{consumerName}/roll": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
       "post": {
         "summary": "Roll consumer key",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {
@@ -55,12 +47,8 @@
       }
     },
     "/consumers/{consumerName} ": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
       "patch": {
         "summary": "Update consumer",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {
@@ -83,12 +71,8 @@
       }
     },
     "/consumers/{consumerName}/keys/{keyId}": {
-      "x-zuplo-path": {
-        "pathMode": "open-api"
-      },
       "delete": {
         "summary": "Delete key",
-        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {
