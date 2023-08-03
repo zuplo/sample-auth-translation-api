@@ -7,11 +7,6 @@ import { environment, ZuploRequest } from "@zuplo/runtime";
 const DATA = {
   orgs: [
     {
-      id: "1000",
-      name: "Fabrikam",
-      members: ["nate@zuplo.com"],
-    },
-    {
       id: "sales-east",
       name: "Contoso",
       members: ["josh@zuplo.com"],

@@ -14,7 +14,7 @@
             "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/?include-api-keys=true&key-format=visible&tag.orgId=${request.user.data.orgId}"
+              "rewritePattern": "${env.BUCKET_URL}/consumers/?include-api-keys=true&key-format=visible&tag.orgId=${context.custom.orgId}"
             }
           },
           "policies": {
@@ -36,7 +36,7 @@
             "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}/roll-key?tag.orgId=${request.user.data.orgId}"
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}/roll-key?tag.orgId=${context.custom.orgId}"
             }
           },
           "policies": {
@@ -58,7 +58,7 @@
             "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}?tag.orgId=${request.user.data.orgId}"
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}?tag.orgId=${context.custom.orgId}"
             }
           },
           "policies": {
@@ -80,7 +80,7 @@
             "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}/keys/${params.keyId}?tag.orgId=${request.user.data.orgId}"
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}/keys/${params.keyId}?tag.orgId=${context.custom.orgId}"
             }
           },
           "policies": {
