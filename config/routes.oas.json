@@ -19,9 +19,7 @@
           },
           "policies": {
             "inbound": [
-              "auth0-jwt-auth-inbound",
-              "set-user-org",
-              "add-zapi-key-auth"
+              "auth-orgid-and-zapi-key-composite"
             ],
             "outbound": []
           }
@@ -35,15 +33,20 @@
         "x-zuplo-route": {
           "corsPolicy": "anything-goes",
           "handler": {
-            "export": "roll",
-            "module": "$import(./modules/roll-key)",
-            "options": {}
+            "export": "urlRewriteHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}/roll-key?tag.orgId=${request.user.data.orgId}"
+            }
           },
           "policies": {
-            "inbound": ["auth0-jwt-auth-inbound", "verify-consumer-access"]
+            "inbound": [
+              "auth-orgid-and-zapi-key-composite"
+            ]
           }
         },
-        "operationId": "f73c7996-b6bc-48b8-815b-ead885d723ed"
+        "operationId": "f73c7996-b6bc-48b8-815b-ead885d723ed",
+        "x-internal": false
       }
     },
     "/consumers/{consumerName} ": {
@@ -55,16 +58,14 @@
             "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}"
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}?tag.orgId=${request.user.data.orgId}"
             }
           },
           "policies": {
             "inbound": [
-              "auth0-jwt-auth-inbound",
-              "verify-consumer-access",
-              "add-zapi-key-auth"
+              "auth-orgid-and-zapi-key-composite"
             ],
-            "outbound": ["set-status-outbound"]
+            "outbound": []
           }
         },
         "operationId": "84960874-662e-4454-ae3f-5f53611ba072"
@@ -79,15 +80,12 @@
             "export": "urlRewriteHandler",
             "module": "$import(@zuplo/runtime)",
             "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}/keys/${params.keyId}"
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}/keys/${params.keyId}?tag.orgId=${request.user.data.orgId}"
             }
           },
           "policies": {
             "inbound": [
-              "auth0-jwt-auth-inbound",
-              "verify-consumer-access",
-              "verify-key-in-consumer",
-              "add-zapi-key-auth"
+              "auth-orgid-and-zapi-key-composite"
             ]
           }
         },

@@ -19,14 +19,6 @@
     },
     {
       "handler": {
-        "export": "default",
-        "module": "$import(./modules/verify-jwt-consumer)"
-      },
-      "name": "verify-consumer-access",
-      "policyType": "custom-code-inbound"
-    },
-    {
-      "handler": {
         "export": "Auth0JwtInboundPolicy",
         "module": "$import(@zuplo/runtime)",
         "options": {
@@ -41,30 +33,25 @@
     {
       "handler": {
         "export": "default",
-        "module": "$import(./modules/verify-key-in-consumer)"
-      },
-      "name": "verify-key-in-consumer",
-      "policyType": "custom-code-inbound"
-    },
-    {
-      "handler": {
-        "export": "SetStatusOutboundPolicy",
-        "module": "$import(@zuplo/runtime)",
-        "options": {
-          "status": 500,
-          "statusText": "OK"
-        }
-      },
-      "name": "set-status-outbound",
-      "policyType": "set-status-outbound"
-    },
-    {
-      "handler": {
-        "export": "default",
         "module": "$import(./modules/set-org-id)"
       },
       "name": "set-user-org",
       "policyType": "custom-code-inbound"
+    },
+    {
+      "handler": {
+        "export": "CompositeInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "policies": [
+            "auth0-jwt-auth-inbound",
+            "set-user-org",
+            "add-zapi-key-auth"
+          ]
+        }
+      },
+      "name": "auth-orgid-and-zapi-key-composite",
+      "policyType": "composite-inbound"
     }
   ]
 }
