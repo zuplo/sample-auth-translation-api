@@ -1,8 +1,5 @@
 import { environment, ZuploRequest } from "@zuplo/runtime";
 
-// The default auth0 domain is set here for the sample
-const AUTH0_DOMAIN = environment.AUTH0_DOMAIN ?? "zuplo-samples.us.auth0.com";
-
 /**
  * This is serves as a mock of a database, api,
  * or other mechanism to store users of the app
@@ -15,7 +12,7 @@ const DATA = {
       members: ["nate@zuplo.com"],
     },
     {
-      id: "1001",
+      id: "sales-east",
       name: "Contoso",
       members: ["josh@zuplo.com"],
     },
@@ -60,7 +57,7 @@ export async function getUserOrg(
  */
 export async function getUserInfo(request: ZuploRequest): Promise<UserInfo> {
   // User Info: https://auth0.com/docs/api/authentication#get-user-info
-  const response = await fetch(`https://${AUTH0_DOMAIN}/userinfo`, {
+  const response = await fetch(`https://${environment.AUTH0_DOMAIN}/userinfo`, {
     headers: {
       "content-type": "application/json",
       authorization: request.headers.get("authorization"),
