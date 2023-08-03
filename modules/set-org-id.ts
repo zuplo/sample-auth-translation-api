@@ -19,10 +19,7 @@ export default async function (request: ZuploRequest, context: ZuploContext) {
     });
   }
 
-  const newRequest = new ZuploRequest(request);
+  context.custom.orgId = org.id;
 
-  // Set the orgId on the user's data object
-  newRequest.user.data.orgId = org.id;
-
-  return newRequest;
+  return request;
 }
