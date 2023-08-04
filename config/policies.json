@@ -52,6 +52,18 @@
       },
       "name": "auth-orgid-and-zapi-key-composite",
       "policyType": "composite-inbound"
+    },
+    {
+      "handler": {
+        "export": "SetStatusOutboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "status": 500,
+          "statusText": "OK"
+        }
+      },
+      "name": "set-status-outbound",
+      "policyType": "set-status-outbound"
     }
   ]
 }

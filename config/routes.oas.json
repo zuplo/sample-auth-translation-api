@@ -42,7 +42,8 @@
           "policies": {
             "inbound": [
               "auth-orgid-and-zapi-key-composite"
-            ]
+            ],
+            "outbound": []
           }
         },
         "operationId": "f73c7996-b6bc-48b8-815b-ead885d723ed",
@@ -86,7 +87,8 @@
           "policies": {
             "inbound": [
               "auth-orgid-and-zapi-key-composite"
-            ]
+            ],
+            "outbound": []
           }
         },
         "operationId": "fa92d9f2-3d03-48e9-b475-19206b52f64a"
