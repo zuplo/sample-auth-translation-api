@@ -1,4 +1,4 @@
-import { environment, ZuploRequest } from "@zuplo/runtime";
+import { environment, ZuploRequest, MemoryZoneReadThroughCache, ZuploContext } from "@zuplo/runtime";
 
 /**
  * This is serves as a mock of a database, api,
@@ -50,7 +50,17 @@ export async function getUserOrg(
  * and email address in your database so that you don't perform this request
  * to the identity provider on every API request
  */
-export async function getUserInfo(request: ZuploRequest): Promise<UserInfo> {
+export async function getUserInfo(request: ZuploRequest, context: ZuploContext): Promise<UserInfo> {
+
+  // IDPs rate limit their user-info endpoints, so we cache the result based on the user sub
+  const cache = new MemoryZoneReadThroughCache<UserInfo>("user-info", context);
+
+  const cachedData = await cache.get(request.user.sub);
+
+  if (cachedData) {
+    return cachedData;
+  }
+
   // User Info: https://auth0.com/docs/api/authentication#get-user-info
   const response = await fetch(`https://${environment.AUTH0_DOMAIN}/userinfo`, {
     headers: {
@@ -59,7 +69,12 @@ export async function getUserInfo(request: ZuploRequest): Promise<UserInfo> {
     },
   });
   if (response.status !== 200) {
-    throw new Error("Could not get user info from identity provider");
+    throw new Error(`Could not get user info from identity provider (status: ${response.status} - ${response.statusText})`);
   }
-  return await response.json();
+
+  // store in cache for next time
+  const data = await response.json();
+  cache.put(request.user.sub, data, 3600);
+
+  return data;
 }
