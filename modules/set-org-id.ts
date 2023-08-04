@@ -8,7 +8,7 @@ import { getUserInfo, getUserOrg } from "./data";
  */
 export default async function (request: ZuploRequest, context: ZuploContext) {
   // Get the current user
-  const user = await getUserInfo(request);
+  const user = await getUserInfo(request, context);
   context.log.debug(user);
   // Get the current user's orgId
   const org = await getUserOrg(user);
