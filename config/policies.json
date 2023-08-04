@@ -64,6 +64,18 @@
       },
       "name": "set-status-outbound",
       "policyType": "set-status-outbound"
+    },
+    {
+      "handler": {
+        "export": "SetStatusOutboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "status": 200,
+          "statusText": "OK"
+        }
+      },
+      "name": "set-status-outbound-1",
+      "policyType": "set-status-outbound"
     }
   ]
 }

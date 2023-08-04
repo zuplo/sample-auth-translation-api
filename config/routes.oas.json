@@ -43,7 +43,9 @@
             "inbound": [
               "auth-orgid-and-zapi-key-composite"
             ],
-            "outbound": []
+            "outbound": [
+              "set-status-outbound-1"
+            ]
           }
         },
         "operationId": "f73c7996-b6bc-48b8-815b-ead885d723ed",
