@@ -34,9 +34,11 @@ function verify(): string | undefined {
 export function runtimeInit(runtime: RuntimeExtensions) {
   runtime.addRequestHook(async (request, context) => {
 
+    const url = new URL(request.url);
+
     // don't intercept CORS, that makes debugging hard
-    // in the browser
-    if (request.method === "OPTIONS") {
+    // in the browser. Also, don't mess with built-in routes
+    if (request.method === "OPTIONS" || url.pathname.startsWith('/__zuplo')) {
       return request;
     }
 
