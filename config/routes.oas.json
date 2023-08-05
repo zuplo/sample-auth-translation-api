@@ -25,6 +25,33 @@
           }
         },
         "operationId": "d86ecbdc-2aa7-4bd0-9e61-4245ecd1d5cd"
+      },
+      "post": {
+        "summary": "Create consumer",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "anything-goes",
+          "handler": {
+            "export": "default",
+            "module": "$import(./modules/create-consumer)",
+            "options": {}
+          },
+          "policies": {
+            "inbound": [
+              "auth-orgid-and-zapi-key-composite"
+            ]
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/create-consumer"
+              }
+            }
+          }
+        },
+        "operationId": "bd902f32-26d8-481d-b053-276d6a694781"
       }
     },
     "/consumers/{consumerName}/roll": {
@@ -92,6 +119,22 @@
           }
         },
         "operationId": "fa92d9f2-3d03-48e9-b475-19206b52f64a"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "create-consumer": {
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "properties": {
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
       }
     }
   }
