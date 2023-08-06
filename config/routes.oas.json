@@ -120,6 +120,31 @@
         },
         "operationId": "fa92d9f2-3d03-48e9-b475-19206b52f64a"
       }
+    },
+    "/consumers/{consumerName}": {
+      "x-zuplo-path": {
+        "pathMode": "open-api"
+      },
+      "delete": {
+        "summary": "Delete consumer",
+        "description": "Lorem ipsum dolor sit amet, **consectetur adipiscing** elit, sed do `eiusmod tempor` incididunt ut labore et dolore magna aliqua.",
+        "x-zuplo-route": {
+          "corsPolicy": "anything-goes",
+          "handler": {
+            "export": "urlRewriteHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}?tag.orgId=${context.custom.orgId}"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "auth-orgid-and-zapi-key-composite"
+            ]
+          }
+        },
+        "operationId": "9dcf25f3-7e22-4338-8255-c55e7165e9c2"
+      }
     }
   },
   "components": {
