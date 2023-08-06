@@ -38,7 +38,7 @@ export function runtimeInit(runtime: RuntimeExtensions) {
 
     // don't intercept CORS, that makes debugging hard
     // in the browser. Also, don't mess with built-in routes
-    if (request.method === "OPTIONS" || url.pathname.startsWith('/__zuplo')) {
+    if (request.method === "OPTIONS") {
       return request;
     }
 
