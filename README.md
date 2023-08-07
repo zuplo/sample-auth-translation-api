@@ -1,4 +1,4 @@
-# Zuplo API Key Auth Translation Sample
+# Auth Translation API sample
 
 TODO
 
