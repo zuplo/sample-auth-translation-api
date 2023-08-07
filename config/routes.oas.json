@@ -77,7 +77,7 @@
         "x-internal": false
       }
     },
-    "/consumers/{consumerName} ": {
+    "/consumers/{consumerName}": {
       "patch": {
         "summary": "Update consumer",
         "x-zuplo-route": {
