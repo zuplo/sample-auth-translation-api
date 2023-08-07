@@ -77,28 +77,6 @@
         "x-internal": false
       }
     },
-    "/consumers/{consumerName}": {
-      "patch": {
-        "summary": "Update consumer",
-        "x-zuplo-route": {
-          "corsPolicy": "anything-goes",
-          "handler": {
-            "export": "urlRewriteHandler",
-            "module": "$import(@zuplo/runtime)",
-            "options": {
-              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}?tag.orgId=${context.custom.orgId}"
-            }
-          },
-          "policies": {
-            "inbound": [
-              "auth-orgid-and-zapi-key-composite"
-            ],
-            "outbound": []
-          }
-        },
-        "operationId": "84960874-662e-4454-ae3f-5f53611ba072"
-      }
-    },
     "/consumers/{consumerName}/keys/{keyId}": {
       "delete": {
         "summary": "Delete key",
@@ -124,6 +102,26 @@
     "/consumers/{consumerName}": {
       "x-zuplo-path": {
         "pathMode": "open-api"
+      },
+      "patch": {
+        "summary": "Update consumer",
+        "x-zuplo-route": {
+          "corsPolicy": "anything-goes",
+          "handler": {
+            "export": "urlRewriteHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "rewritePattern": "${env.BUCKET_URL}/consumers/${params.consumerName}?tag.orgId=${context.custom.orgId}"
+            }
+          },
+          "policies": {
+            "inbound": [
+              "auth-orgid-and-zapi-key-composite"
+            ],
+            "outbound": []
+          }
+        },
+        "operationId": "84960874-662e-4454-ae3f-5f53611ba072"
       },
       "delete": {
         "summary": "Delete consumer",
