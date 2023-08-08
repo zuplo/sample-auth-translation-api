@@ -9,7 +9,7 @@ const DATA = {
     {
       id: "sales-east",
       name: "Contoso",
-      members: ["josh@zuplo.com"],
+      members: ["abdallah@zuplo.com"],
     },
   ],
 };
