@@ -10,7 +10,7 @@ For a full tutorial on how to use this sample with the react component see [Zupl
 
 The easiest way to start is to click the button below to deploy this project to your own Zuplo account. If you don't have an account, you will be prompted to create one after you click the button or you can go to https://portal.zuplo.com and sign up.
 
-[![Create Project](https://cdn.zuplo.com/www/zupit.svg)](http://portal.zuplo.com/zup-it?sourceRepoUrl=https://github.com/zuplo/sample-api-key-auth-translation.git)
+[![Create Project](https://cdn.zuplo.com/www/zupit.svg)](http://portal.zuplo.com/zup-it?sourceRepoUrl=https://github.com/zuplo/sample-auth-translation-api)
 
 ## Community and Contribution
 
