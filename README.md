@@ -12,6 +12,10 @@ The easiest way to start is to click the button below to deploy this project to 
 
 [![Create Project](https://cdn.zuplo.com/www/zupit.svg)](http://portal.zuplo.com/zup-it?sourceRepoUrl=https://github.com/zuplo/sample-auth-translation-api)
 
+## Setup
+
+You can follow the end-to-end tutorial [here](https://zuplo.com/blog/2023/08/08/open-source-release#2--clone-the-auth-translation-api).
+
 ## Community and Contribution
 
 We welcome community contributions and ideas. Please feel free to open an issue
