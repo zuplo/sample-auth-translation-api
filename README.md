@@ -4,7 +4,7 @@ A sample Zuplo API that enables self-serve API Key management in your product's 
 
 This project uses Zuplo's [API Key Management service](https://zuplo.com/docs/articles/api-key-management) to security store your API Keys.
 
-For a full tutorial on how to use this sample with the react component see [Zuplo's blog post](https://zuplo.com/blog).
+For a full tutorial on how to use this sample with the react component see [Zuplo's blog post]([https://zuplo.com/blog](https://zuplo.com/blog/2023/08/08/open-source-release)).
 
 ## Using
 
