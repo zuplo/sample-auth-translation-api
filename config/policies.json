@@ -64,6 +64,17 @@
       },
       "name": "set-status-outbound",
       "policyType": "set-status-outbound"
+    },
+    {
+      "handler": {
+        "export": "ApiKeyInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "allowUnauthenticatedRequests": false
+        }
+      },
+      "name": "api-key-inbound",
+      "policyType": "api-key-inbound"
     }
   ]
 }
