@@ -159,7 +159,9 @@
             "options": {}
           },
           "policies": {
-            "inbound": []
+            "inbound": [
+              "api-key-inbound"
+            ]
           }
         },
         "operationId": "ce8c9b1f-e146-4c67-b05a-8fd69cd0121b"
