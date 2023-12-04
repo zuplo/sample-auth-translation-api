@@ -19,7 +19,7 @@ You can follow the end-to-end tutorial [here](https://zuplo.com/blog/2023/08/08/
 ## Community and Contribution
 
 We welcome community contributions and ideas. Please feel free to open an issue
-or propose a pull request. [Join us on Discord](https://discord.gg/Y87N4SxjvJ)
+or propose a pull request. [Join us on Discord](https://discord.zuplo.com)
 if you have questions, feedback, or just want to hang out.
 
 ## License
